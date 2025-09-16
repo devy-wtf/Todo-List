@@ -1,14 +1,32 @@
-import { useState } from 'react'
+import React  from 'react'
 import './App.css'
 import Header from './components/Header'
+import Formulario from './components/Formulario'
+import ListaTareas from './components/ListaTareas'
+import { useTareas } from './hooks/useTareas';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+    const {
+    tareas,
+    error,
+    handleCrear,
+    handleEditar,
+    handleEliminar,
+  } = useTareas();
 
+  if (error) return <p>Error: {error.message}</p>;
   return (
     <>
-    <Header />    
+    <Header />
+      <main>
+        <Formulario crearTarea={handleCrear} />
+        <ListaTareas
+          tareas={tareas}
+          onEditar={handleEditar}
+          onEliminar={handleEliminar}
+        />
+      </main>
     </>
   )
 }
