@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+
+import React, { useState } from 'react';
+import '../styles/Formulario.css';
 
 
 export default function Formulario({ crearTarea }) {
@@ -7,10 +9,13 @@ export default function Formulario({ crearTarea }) {
 
   const manejarEnvio = async e => {
     e.preventDefault();
-    await crearTarea({ nombre: nombreTarea, descripcion: descTarea });
+    await crearTarea({ nombre: nombreTarea, descripcion: descTarea, completada: false});
     setNombreTarea('');
     setDescTarea('');
   };
+
+
+  
 
   return (
     <form className="formularioTarea" onSubmit={manejarEnvio}>

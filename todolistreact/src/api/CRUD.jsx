@@ -32,3 +32,12 @@ export const eliminarTarea = async id => {
   if (!res.ok) throw new Error(`Error al eliminar tarea: ${res.status}`);
   return id;
 };
+export const togglearCompletada = async (id, completada) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completada }),
+  });
+  if (!res.ok) throw new Error(`Error al togglear: ${res.status}`);
+  return res.json();
+};

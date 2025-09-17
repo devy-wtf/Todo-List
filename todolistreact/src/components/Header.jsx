@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/Header.css';
 
 function Header() {
   const [hora, setHora] = useState(new Date());
@@ -18,7 +19,6 @@ function Header() {
         <h1>
             Gestor de tareas.
         </h1>
-        <button className='switchTema'></button>
         <div className='hora'>
           {formatoHora}
         </div>

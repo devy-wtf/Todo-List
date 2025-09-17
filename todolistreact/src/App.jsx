@@ -1,5 +1,4 @@
 import React  from 'react'
-import './App.css'
 import Header from './components/Header'
 import Formulario from './components/Formulario'
 import ListaTareas from './components/ListaTareas'
@@ -13,6 +12,7 @@ function App() {
     handleCrear,
     handleEditar,
     handleEliminar,
+    handleToggle
   } = useTareas();
 
   if (error) return <p>Error: {error.message}</p>;
@@ -25,6 +25,7 @@ function App() {
           tareas={tareas}
           onEditar={handleEditar}
           onEliminar={handleEliminar}
+          onToggle={handleToggle} 
         />
       </main>
     </>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import '../styles/ListaTareas.css' 
 
-export default function ListaTareas({ tareas, onEditar, onEliminar }) {
+export default function ListaTareas({ tareas, onEditar, onEliminar, onToggle }) {
   const [editTarget, setEditTarget] = useState(null);
   const [editNombre, setEditNombre] = useState('');
   const [editDesc, setEditDesc] = useState('');
@@ -55,10 +56,17 @@ export default function ListaTareas({ tareas, onEditar, onEliminar }) {
           </li>
         ) : (
           <li key={tarea.id} className="tareaItem">
+             <input
+            type="checkbox"
+            checked={tarea.completada}
+            onChange={() => onToggle(tarea.id, tarea.completada)}
+          />
             <h3>{tarea.nombre}</h3>
             <p>{tarea.descripcion}</p>
             <button onClick={() => onEliminar(tarea.id)}>Borrar</button>
+            {!tarea.completada && (
             <button onClick={() => iniciarEdicion(tarea)}>Editar</button>
+          )}
           </li>
         )
       )}

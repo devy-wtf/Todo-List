@@ -4,6 +4,7 @@ import {
   crearTarea as apiCrear,
   editarTarea as apiEditar,
   eliminarTarea as apiEliminar,
+  togglearCompletada,
 } from '../api/CRUD'
 
 export function useTareas() {
@@ -31,6 +32,12 @@ export function useTareas() {
     }
   };
 
+  const handleToggle = async (id, current) => {
+  const actualizada = await togglearCompletada(id, !current);
+  setTareas(prev =>
+    prev.map(t => (t.id === id ? actualizada : t))
+  );
+};
   const handleEditar = async (id, cambios) => {
     try {
       const actualizada = await apiEditar(id, cambios);
@@ -57,5 +64,6 @@ export function useTareas() {
     handleCrear,
     handleEditar,
     handleEliminar,
+    handleToggle
   };
 }

@@ -1,0 +1,37 @@
+
+:root {
+  --color-navy: #001f3f;
+  --color-gold: #d4af37;
+  --tiempo-transicion: .3s;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--color-gold);
+  font-family: sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed; 
+  inset: 0;
+  background: url('https://i.pinimg.com/736x/77/87/9f/77879fa285ea9dbb3385ff44b9ec139c.jpg')
+    center center / cover no-repeat;
+  filter: blur(8px) brightness(0.8) contrast(1.2);
+  transform: scale(1.1); 
+  z-index: -1; 
+}
+
+.tareaItem {
+  background-color: var(--color-navy);
+  color: var(--color-gold);
+  padding: 1rem;
+  margin-bottom: .5rem;
+  border-radius: 4px;
+  transition: opacity var(--tiempo-transicion);
+}
+
+.tareaItem.completada {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
